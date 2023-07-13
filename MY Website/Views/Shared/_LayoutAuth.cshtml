@@ -1,0 +1,223 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="~/css/styles.css" rel="stylesheet">
+    <link href="~/css/project.css" rel="stylesheet">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="~/images/favicon_io/apple-touch-icon.png">
+</head>
+<body style="background-image:url(~/images/bg-images/auth-bg2.jpg)">
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light pt-2" aria-label="Main navigation">
+        <div class="container">
+
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image py-2 m-0" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/images/logo-roshan.png" style="height: 70px; width: 120px;" alt="alternative">
+            </a>
+
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" aria-current="page" asp-area="" asp-controller="home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" asp-area="" asp-controller="home" asp-action="About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" asp-area="" asp-controller="home" asp-action="Project">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" asp-area="" asp-controller="home" asp-action="Contact">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-6" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                           aria-expanded="false">Services</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                            <li><a class="dropdown-item" asp-area="" asp-controller="home" asp-action="Blog">Blogs</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="home" asp-action="Privacy">Privacy Policy</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="./images/Final_CV(Roshan_Nyaupane).pdf">My Resume</a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="home" asp-action="Gallery">Gallery</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <span class="nav-item ms-lg-5">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn-outline-sm mx-1" asp-area="" asp-controller="Users" asp-action="Login">Sign In</a>
+                    }
+                    @*                    @if(User.Identity.IsAuthenticated)
+                    {
+                    <a class="btn-outline-sm mx-1" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+                    }*@
+                </span>
+            </div>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="container-fluid w-auto mx-1 d-none d-lg-flex">
+                <a class="navbar-brand me-1" href="#">
+                    <img src="~/images/bg-imges/avatar.png" alt="Logo" style="width:50px;" class="rounded-pill">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-start " aria-labelledby="navbarDarkDropdownMenuLink" style="margin-left:-10px;margin-top:10px">
+                                <li><a class="dropdown-item border-bottom" href="#">Profile</a></li>
+                                <li><a class="dropdown-item border-bottom" href="#">Dark Mode</a></li>
+                                <li><a class="dropdown-item border-bottom" asp-area="" asp-controller="Users" asp-action="Logout">Logut</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+
+        @* @if (User.Identity.IsAuthenticated)
+        {
+        <p class="text-success me-1 pt-2 me-4" id="hideMe">Welcome @User.Identity.Name ! </p>
+        }*@
+    </nav>
+    <!-- end of navigation -->
+    <!-- end of navigation -->
+    <!-- Login / Register-->
+    <div class="d-flex justify-content-center " id="authMain">
+        <div class="shadow mb-5 bg-transparent w-sm-100 w-md-75 w-lg-50 col-lg-4 " style="height:100%; margin-top:180px;">
+            <div class="container mt-3 col-md-12">
+                <div class="card border-light mt-3 p-2 " style="background-color:#ededede8;border-radius:2rem">
+                    <div class="card-header  border-white mt-3">
+                        <ul class="nav nav-pills nav-fill">
+                            <li class="nav-item me-1">
+                                <a class="nav-link  active text-decoration-none " id="login-tab" asp-area="" asp-controller="Users" asp-action="Login" style="border-radius:16px">Login</a>
+                            </li>
+                            <li class="nav-item ms-1">
+                                <a class="nav-link active  text-decoration-none " id="register-tab" asp-area="" asp-controller="Users" asp-action="Signup" style="border-radius:16px">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-col first">
+                        <h4 class="text-secondary">About Website</h4>
+                        <p class="p-small">
+                            This website serves as a showcase of my work, skills, and experiences.
+                            It is designed to provide an overview of my professional journey and highlight the projects
+                            and achievements that define my career.
+                        </p>
+                        <h6 class=" pt-3">
+                            I would love to hear from you <a href="mailto:contact@site.com">
+                                <p class="p-small pt-2">roshannyaupane01@gmail.com</p>
+                            </a>
+                        </h6>
+                    </div> <!-- end of footer-col -->
+                    <div class="footer-col second">
+                        <h4 class="text-secondary">
+                            Get In Touch</h4>
+                            <p><i class="bi bi-house-fill text-secondary fs-5 me-2"></i> Kathmandu-30 ,Ratopul</p>
+                            <p>
+                                <i class="bi bi-envelope-fill text-secondary fs-5 me-2"></i>
+                                neupaner590@gmail.com
+                            </p>
+                            <p>
+                                <i class="bi bi-telephone-fill text-secondary fs-5 me-2"></i>
+                                <a asp-action="">+ 977 - 9840953005</a>
+                            </p>
+                            <p>
+                                <i class="bi bi-telephone-fill text-secondary fs-5 me-2"></i>
+                                <a asp-action="">+ 977 - 9882051995</a>
+                            </p>
+                        </h4>
+                    </div> <!-- end of footer-col -->
+                    <div class="footer-col third spa">
+                        <h4 class="mb-3 text-start text-secondary ps-4">Social Links</h4>
+                        <span class="fa-stack mx-1">
+                            <a href="https://www.facebook.com/profile.php?id=100082724087904" target="_blank"
+                               style="color: #3b5998">
+                                <i class="bi bi-facebook fs-3"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack mx-1">
+                            <a href="https://www.linkedin.com/in/roshan-nyaupane/" target="_blank"
+                               style="color: #0077b5;">
+                                <i class="bi bi-linkedin fs-3"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack mx-1">
+                            <a href="https://twitter.com/Enapuayn" target="_blank" style="color: #00acee;">
+                                <i class="bi bi-twitter fs-3"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack mx-1">
+                            <a href="https://github.com/RNyaupane" target="_blank" style="color: #171515">
+                                <i class="bi bi-github fs-3"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of footer -->
+    <!-- Copyright -->
+    <div class="copyright bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small pt-3 text-light">
+                        Copyright © <a asp-action="" class="text-light">roshan-nyaupane</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of copyright -->
+    <!-- Scripts -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/scripts.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

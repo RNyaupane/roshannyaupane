@@ -1,0 +1,38 @@
+﻿@model MY_Website.Models.UserContactViewModel
+@{
+    ViewData["Title"] = "contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="contact" class="form-1 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="image-container">
+                    <img class="img-fluid" src="~/images/contact.png" alt="alternative">
+                </div> 
+            </div> 
+            <div class="col-lg-6">
+                <div class="text-container">
+                    <h2>Contact us </h2>
+                    <form method="post" action="Contact" >
+                        <div class="form-group">
+                            <input type="text" asp-for="Name" class="form-control-input mt-3" placeholder="Name" >
+                            <span asp-validation-for="Name" class="text-danger ms-2"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" asp-for="Email" class="form-control-input" placeholder="Email" >
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea asp-for="Message" class="form-control-textarea" placeholder="Message" ></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control-submit-button" >Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 class="text-center mb-3 me-5" style="margin-top:130px;">User Management</h3>
+<div className="table-responsive">
+    <table class="table table-bordered mx-5 w-auto">
+        <thead>
+            <tr class="text-center">
+                <th width="25%">Id</th>
+                <th width="25%">Name</th>
+                <th width="25%">Email</th>
+                <th width="10%">Status</th>
+                <th width="20%">Action</th>
+            </tr>
+        </thead>
+        <tbody id="table_data" class="text-center">
+        </tbody>
+
+
+    </table>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/custom.js"></script>

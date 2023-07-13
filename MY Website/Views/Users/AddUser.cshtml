@@ -1,0 +1,62 @@
+﻿@model MY_Website.Models.AddUserViewModal
+@{
+}
+<div class="container mt-3">
+    <div class="card border-white">
+        <div class="card-header bg-light border-white">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active text-decoration-none" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-decoration-none " id="register-tab" data-bs-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                    <!-- <h5 class="card-title">Login</h5> -->
+                    <form>
+                        <div class="my-3">
+                            <label for="loginEmail" class="form-label text-dark">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label text-dark">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required>
+                        </div>
+                        <div class="mb-1 text-end">
+                            <a class="text-decoration-none text-primary" asp-action="">Forget Password??</a>
+                        </div>
+                        <div class="mb-2 text-center d-flex">
+                            <button type="submit" class="btn btn-solid-lg mt-4 w-50 me-1">Login</button>
+                            <button type="submit" class="btn btn-outline-lg mt-4 w-50" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                    <!-- <h5 class="card-title">Register</h5> -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label text-dark">Email address</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="Enter email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label text-dark">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Enter password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label text-dark">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Enter password" required>
+                        </div>
+                        <div class="mb-2 text-center d-flex">
+                            <button type="submit" class="btn btn-solid-lg mt-4 w-50 me-1">Login</button>
+                            <button type="submit" class="btn btn-outline-lg mt-4 w-50" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

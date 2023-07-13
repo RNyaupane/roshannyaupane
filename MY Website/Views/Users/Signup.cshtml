@@ -1,0 +1,78 @@
+﻿@model MY_Website.Models.AuthUserViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+
+@*Register*@
+
+<div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="login-tab">
+    <form method="post" asp-action="Signup">
+        <div class="mb-3">
+            <label class="form-label text-dark" asp-for="Name"></label>
+            <input type="text" class="form-control shadow-none rounded-pill" asp-for="Name" placeholder="Enter Your Name"
+                   style="padding:11px 0px 11px 26px;background:#ffffff8a">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-dark" asp-for="Email"></label>
+            <input type="email" class="form-control shadow-none rounded-pill" asp-for="Email" placeholder="Enter email"
+                   style="padding:11px 0px 11px 26px;background:#ffffff8a">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-dark" asp-for="Password"></label>
+            <input id="registerPassword" type="password" class="form-control shadow-none rounded-pill" asp-for="Password" placeholder="Enter password"
+                   style="padding:11px 0px 11px 26px;background:#ffffff8a">
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <i id="opened" class="fa-solid fa-eye float-end" style="margin-top:-30px;margin-right:14px;cursor:pointer; display:none;"></i>
+            <i id="closed" class="fa-solid fa-eye-slash float-end" style="margin-top:-30px;margin-right:14px;cursor:pointer;"></i>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-dark" asp-for="ConfirmPassword"></label>
+            <input id="confirmPassword" type="password" class="form-control shadow-none rounded-pill" asp-for="ConfirmPassword" placeholder="Confirm password"
+                   style="padding:11px 0px 11px 26px;background:#ffffff8a">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            <i id="confirmpassOpen" class="fa-solid fa-eye float-end" style="margin-top:-30px;margin-right:14px;cursor:pointer; display:none;"></i>
+            <i id="confirmpassCLose" class="fa-solid fa-eye-slash float-end" style="margin-top:-30px;margin-right:14px;cursor:pointer;"></i>
+        </div>
+        <div class="mb-3 form-check d-none">
+            <input type="checkbox" asp-for="IsActive" class="form-check-input shadow-none" style="cursor:pointer">
+            <label class="form-check-label" asp-for="IsActive"></label>
+        </div>
+        <div class="mb-2 mt-4 text-center d-flex justify-content-center">
+            <button type="submit" class="btn btn-outline-lg mt-4 w-50 me-1">Register</button>
+        </div>
+    </form>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#opened").click(function () {
+            $("#opened").hide();
+            $("#closed").show();
+            $("#registerPassword").attr("type", "password");
+        });
+        $("#closed").click(function () {
+            $("#closed").hide();
+            $("#opened").show();
+            $("#registerPassword").attr("type", "text");
+        });
+        $("#confirmpassOpen").click(function () {
+            $("#confirmpassOpen").hide();
+            $("#confirmpassCLose").show();
+            $("#confirmPassword").attr("type", "password");
+        });
+        $("#confirmpassCLose").click(function () {
+            $("#confirmpassCLose").hide();
+            $("#confirmpassOpen").show();
+            $("#confirmPassword").attr("type", "text");
+        });
+    })
+</script>
