@@ -36,6 +36,7 @@ namespace MY_Website.Controllers
         {
             return View();
         }
+        
         [HttpPost]
         public IActionResult Signup(AuthUserViewModel addUserRequest)
         {
