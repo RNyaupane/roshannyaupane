@@ -1,8 +1,9 @@
-﻿@model MY_Website.Models.UserContactViewModel
+﻿@model MY_Website.Models.ContactViewModel
 @{
     ViewData["Title"] = "contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div id="contact" class="form-1 bg-light">
     <div class="container">
         <div class="row">
@@ -13,8 +14,12 @@
             </div> 
             <div class="col-lg-6">
                 <div class="text-container">
-                    <h2>Contact us </h2>
-                    <form method="post" action="Contact" >
+                    <h2 class="d-inline">Contact us </h2>
+                    @if (TempData.ContainsKey("SuccessMessage"))
+                    {
+                        <p class="float-end text-success mt-2 hideMeFast">@TempData["SuccessMessage"]</p>
+                    }
+                    <form method="post" asp-action="Contact">
                         <div class="form-group">
                             <input type="text" asp-for="Name" class="form-control-input mt-3" placeholder="Name" >
                             <span asp-validation-for="Name" class="text-danger ms-2"></span>

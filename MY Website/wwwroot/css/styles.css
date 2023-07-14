@@ -1428,9 +1428,13 @@ a:hover {
 	font-weight: 800 !important;
 }
 
-#hideMe {
+#hideMe{
 	-webkit-animation: cssAnimation 5s forwards;
 	animation: cssAnimation 5s forwards;
+}
+.hideMeFast {
+	-webkit-animation: cssAnimation 3s forwards;
+	animation: cssAnimation 3s forwards;
 }
 
 @keyframes cssAnimation {

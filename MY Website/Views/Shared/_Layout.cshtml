@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
 
     <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <!-- Option 1: Include in HTML -->
@@ -32,10 +32,10 @@
             </a>
 
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
-                aria-label="Toggle navigation">
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
 
                 <ul class="navbar-nav ms-auto navbar-nav-scroll">
@@ -53,7 +53,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fs-6" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                            aria-expanded="false">Pages</a>
+                           aria-expanded="false">Pages</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown01">
                             <li><a class="dropdown-item fs-6" asp-area="" asp-controller="home" asp-action="Blog">Blogs</a></li>
                             <li>
@@ -66,10 +66,13 @@
                             <li>
                                 <a class="dropdown-item fs-6" href="~/images/Final_CV(Roshan_Nyaupane).pdf" target="_blank">My Resume</a>
                             </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li><a class="dropdown-item fs-6" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor:pointer">Tic Tac Toe</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li><a class="dropdown-item fs-6" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor:pointer">Tic Tac Toe</a></li>
+                            }
                             <li>
                                 <div class="dropdown-divider"></div>
                             </li>
@@ -82,9 +85,9 @@
                     {
                         <a class="btn-outline-sm mx-1 fs-6" asp-area="" asp-controller="Users" asp-action="Login">Sign In</a>
                     }
-@*                    @if(User.Identity.IsAuthenticated)
+                    @*@if(User.Identity.IsAuthenticated)
                     {
-                        <a class="btn-outline-sm mx-1" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+                    <a class="btn-outline-sm mx-1" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
                     }*@
                 </span>
             </div>
@@ -101,8 +104,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @User.Identity.Name
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-start " aria-labelledby="navbarDarkDropdownMenuLink" style="margin-left:-10px;margin-top:10px">
-                                <li><a class="dropdown-item border-bottom fs-6" href="#"><i class="fa-solid fa-user me-3 fs-5"></i> Profile</a></li>
+                            <ul class="dropdown-menu dropdown-menu-start " aria-labelledby="navbarDarkDropdownMenuLink" style="margin-left:-20px;margin-top:10px">
+                                <li><a class="dropdown-item border-bottom fs-6" href="#"><i class="fa-solid fa-user me-3 fs-5"></i>Update Photo</a></li>
                                 <li><a class="dropdown-item border-bottom fs-6" href="#"><i class="fa-solid fa-toggle-on me-3 fs-5"></i>Dark Mode</a></li>
                                 <li><a class="dropdown-item border-bottom fs-6" asp-area="" asp-controller="Users" asp-action="Logout"><i class="fa-solid fa-right-from-bracket me-3 fs-5"></i>Logut</a></li>
                             </ul>
@@ -111,30 +114,27 @@
                 </div>
             </div>
         }
-        
-       @* @if (User.Identity.IsAuthenticated)
-        { 
-            <p class="text-success me-1 pt-2 me-4" id="hideMe">Welcome @User.Identity.Name ! </p>
-        }*@
+
+
     </nav>
     <!-- end of navigation -->
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content" s>
+            <div class="modal-content" style="height:700px">
                 <div class="modal-header border-0">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <h1 class="text-center border-bottom pb-4 fs-1" id="staticBackdropLabel">Tic Tac Toe</h1>
                 <div class="modal-body" id="modalBody">
-                    <div id="intro-screen" class="center mb-5">
+                    <div id="intro-screen" class="center mb-5" style="margin-top:100px">
                         <h2 class="pb-5">Choose your symbol:</h2>
                         <button type="button" id="choose-x" class="choose ">X</button>
                         <button type="button" id="choose-o" class="choose">O</button>
                     </div>
 
-                    <div id="enemy-screen" class="center hidden mb-5">
+                    <div id="enemy-screen" class="center hidden " style="margin-top:100px">
                         <h2 class="pb-4">Play against:</h2>
                         <button type="button" id="choose-human" class="choose px-5 me-5">Human</button>
                         <button type="button" id="choose-cpu" class="choose px-5">Bot</button>
@@ -186,7 +186,7 @@
             </div>
         </div>
     </div>
-   
+
 
     @RenderBody()
 

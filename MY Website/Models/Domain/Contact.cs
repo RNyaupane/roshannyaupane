@@ -2,7 +2,7 @@
 
 namespace MY_Website.Models.Domain
 {
-    public class UserContact
+    public class Contact
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

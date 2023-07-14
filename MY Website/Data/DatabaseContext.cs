@@ -11,6 +11,6 @@ namespace MY_Website.Data
         }
 
         public DbSet<Users> Users { get; set; }
-        public DbSet<UserContact> Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

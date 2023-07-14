@@ -6,8 +6,8 @@ namespace MY_Website.Models
         //Login
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Email")]
-        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "Please Enter Username")]
+        [Display(Name = "Username")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please Enter Password")]

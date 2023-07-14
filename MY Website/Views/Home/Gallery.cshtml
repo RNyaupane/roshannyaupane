@@ -1,12 +1,34 @@
-﻿
+﻿@model MY_Website.Models.GalleryViewModal
 @{
 }
 <div id="projects" class="cards-2">
     <div class="container">
         <div class="container">
-
-            <h1 class="fw-light text-center text-lg-start mt-4 mb-0">My Gallery</h1>
-
+            
+            <h1 class="fw-light text-center text-lg-start mt-4 mb-0 d-inline">My Gallery</h1>
+            <a class="btn-solid-lg float-end" asp-action="" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Add Gallery</a>
+            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="post" asp-action="Gallery">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Add Gallery</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="formFile" class="form-labe text-dark mb-3" asp-for="Image">Select Image(.jpg .png .jpeg)</label>
+                                <input class="form-control" type="file" id="formFile" asp-for="Image" style="border: 1px solid #ccc;padding: 10px;background-color: #f8f8f8;color: #333;">
+                                <span asp-validation-for="Image" class=""></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-solid-lg">Add</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <hr class="mt-2 mb-5">
 
             <div class="row text-center text-lg-start">

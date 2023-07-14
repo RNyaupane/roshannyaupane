@@ -2,7 +2,7 @@
 
 namespace MY_Website.Models
 {
-    public class UserContactViewModel
+    public class ContactViewModel
     {
         [Required(ErrorMessage ="Enter Name")]
         public string Name { get; set; }

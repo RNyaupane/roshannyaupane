@@ -72,19 +72,28 @@ namespace MY_Website.Controllers
         [HttpPost]
         public IActionResult Login(LoginUserViewModel addUserRequest)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var data = databaseContext.Users.Where(e => e.Email == addUserRequest.Email).SingleOrDefault();
-                if(data != null)
+                var data = databaseContext.Users.FirstOrDefault(e => e.Email == addUserRequest.Email);
+
+                if (data != null)
                 {
-                    bool isValid=(data.Email == addUserRequest.Email && data.Password==addUserRequest.Password);
+                    bool isValid = (data.Email == addUserRequest.Email && data.Password == addUserRequest.Password);
                     if (isValid)
                     {
-                        var identity = new ClaimsIdentity(new[] {new Claim(ClaimTypes.Name, addUserRequest.Email) },
-                            CookieAuthenticationDefaults.AuthenticationScheme);
+                        var identity = new ClaimsIdentity(new[]
+                             {
+                                new Claim(ClaimTypes.Name, data.Name),
+                                new Claim(ClaimTypes.Email, data.Email)
+                            }, CookieAuthenticationDefaults.AuthenticationScheme);
                         var principle = new ClaimsPrincipal(identity);
                         HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle);
                         HttpContext.Session.SetString("Email", addUserRequest.Email);
+
+                        // Set the name as User.Identity.Name
+                        var nameClaim = new Claim(ClaimTypes.Name, data.Name);
+                        HttpContext.User.AddIdentity(new ClaimsIdentity(new[] { nameClaim }));
+
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -95,7 +104,7 @@ namespace MY_Website.Controllers
                 }
                 else
                 {
-                    TempData["errorUser"] = "User Not Found !";
+                    TempData["errorUser"] = "User Not Found!";
                     return View(addUserRequest);
                 }
             }
@@ -104,6 +113,7 @@ namespace MY_Website.Controllers
                 return View(addUserRequest);
             }
         }
+
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

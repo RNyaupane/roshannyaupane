@@ -12,7 +12,7 @@
     <form method="post" asp-action="Login">
         <div class="my-3">
             <label class="form-label text-dark" asp-for="Email"></label>
-            <input type="email" class="form-control  shadow-none rounded-pill" asp-for="Email" placeholder="Enter email"
+            <input type="email" class="form-control  shadow-none rounded-pill" asp-for="Email" placeholder="Enter Username"
                    style="padding:11px 0px 11px 26px;background:#ffffff8a">
             <span asp-validation-for="Email" class="text-danger"></span>
             <span class="text-danger">@TempData["errorUser"]</span>

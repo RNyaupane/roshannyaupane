@@ -223,16 +223,17 @@
                     My Resume
                 </a>
             </div>*@
-
-            <div class="row d-flex justify-content-center">
-
-                <div class="col-lg-3 col-md-4 col-6">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-3 col-md-4 col-6">
                     <a href="#" class="d-block mb-4 h-auto shadow">
                         <img class="img-fluid img-thumbnail rounded-0" src="~/images/TicTacToe.png" alt="">
                     </a>
                     <a class="btn-solid-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor:pointer">Play</a>
                 </div>
             </div>
+            }
         </div>
     </div>
 </div>
