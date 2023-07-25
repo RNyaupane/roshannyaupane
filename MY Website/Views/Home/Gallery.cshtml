@@ -1,7 +1,7 @@
 ﻿@model MY_Website.Models.GalleryViewModal
 @{
 }
-<div id="projects" class="cards-2">
+<div id="projects" class="cards-2 bg-gray">
     <div class="container">
         <div class="container">
             
@@ -18,7 +18,7 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="formFile" class="form-labe text-dark mb-3" asp-for="Image">Select Image(.jpg .png .jpeg)</label>
-                                <input class="form-control" type="file" id="formFile" asp-for="Image" style="border: 1px solid #ccc;padding: 10px;background-color: #f8f8f8;color: #333;">
+                                <input class="form-control" type="file" id="formFile" asp-for="Image" >
                                 <span asp-validation-for="Image" class=""></span>
                             </div>
                         </div>

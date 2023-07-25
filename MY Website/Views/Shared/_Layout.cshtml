@@ -28,7 +28,7 @@
 
             <!-- Image Logo -->
             <a class="navbar-brand logo-image py-2 m-0" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/images/logo-roshan.png" style="height: 70px; width: 120px;" alt="alternative">
+                <img id="logoImage" src="~/images/logo-roshan.png" style="height: 70px; width: 120px;" alt="alternative">
             </a>
 
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
@@ -77,8 +77,22 @@
                                 <div class="dropdown-divider"></div>
                             </li>
                             <li><a class="dropdown-item fs-6" asp-area="" asp-controller="home" asp-action="Gallery">Gallery</a></li>
+                            
                         </ul>
                     </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown d-lg-none d-xxl-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-start pt-0" aria-labelledby="navbarDarkDropdownMenuLink" style="margin-left:-55px;margin-top:10px">
+                                <li><a class="dropdown-item border-bottom fs-6 py-3" href="#"><i class="fa-solid fa-user me-3 fs-5"></i>Update Photo</a></li>
+                                <li><button class="dropdown-item border-bottom fs-6 py-3" id=""><i class="fa-solid fa-toggle-on me-3 fs-5"></i>Change Theme</button></li>
+                                <li><a class="dropdown-item border-bottom fs-6 py-3" asp-area="" asp-controller="Users" asp-action="Logout"><i class="fa-solid fa-right-from-bracket me-3 fs-5"></i>Logut</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 <span class="nav-item ms-lg-5">
                     @if (!User.Identity.IsAuthenticated)
@@ -94,8 +108,8 @@
         </div>
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="container-fluid w-auto mx-1 d-none d-lg-flex">
-                <a class="navbar-brand me-1" href="#">
+            <div class="container-fluid w-auto mx-1">
+                <a class="navbar-brand me-1 d-none d-lg-flex" href="#">
                     <img src="~/images/bg-imges/avatar.png" alt="Logo" style="width:50px;" class="rounded-pill">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
@@ -104,10 +118,10 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @User.Identity.Name
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-start " aria-labelledby="navbarDarkDropdownMenuLink" style="margin-left:-20px;margin-top:10px">
-                                <li><a class="dropdown-item border-bottom fs-6" href="#"><i class="fa-solid fa-user me-3 fs-5"></i>Update Photo</a></li>
-                                <li><a class="dropdown-item border-bottom fs-6" href="#"><i class="fa-solid fa-toggle-on me-3 fs-5"></i>Dark Mode</a></li>
-                                <li><a class="dropdown-item border-bottom fs-6" asp-area="" asp-controller="Users" asp-action="Logout"><i class="fa-solid fa-right-from-bracket me-3 fs-5"></i>Logut</a></li>
+                            <ul class="dropdown-menu dropdown-menu-start pt-0" aria-labelledby="navbarDarkDropdownMenuLink" style="margin-left:-55px;margin-top:10px">
+                                <li><a class="dropdown-item border-bottom fs-6 py-3" href="#"><i class="fa-solid fa-user me-3 fs-5"></i>Update Photo</a></li>
+                                <li><button class="dropdown-item border-bottom fs-6 py-3" id="ChangeTheme"><i class="fa-solid fa-toggle-on me-3 fs-5"></i>Change Theme</button></li>
+                                <li><a class="dropdown-item border-bottom fs-6 py-3" asp-area="" asp-controller="Users" asp-action="Logout"><i class="fa-solid fa-right-from-bracket me-3 fs-5"></i>Logut</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -121,10 +135,10 @@
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="height:700px">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content bg-gray" style="height:700px">
                 <div class="modal-header border-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close closeButton" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <h1 class="text-center border-bottom pb-4 fs-1" id="staticBackdropLabel">Tic Tac Toe</h1>
                 <div class="modal-body" id="modalBody">
@@ -190,80 +204,135 @@
 
     @RenderBody()
 
-    <!-- Footer -->
-    <div class="footer " style="background:#ebf2f4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-col first">
-                        <h4 class="text-secondary">About Website</h4>
-                        <p class="p-small">
-                            This website serves as a showcase of my work, skills, and experiences.
-                            It is designed to provide an overview of my professional journey and highlight the projects
-                            and achievements that define my career.
-                        </p>
-                        <h6 class=" pt-3">
-                            I would love to hear from you <a href="mailto:contact@site.com">
-                                <p class="p-small pt-2">roshannyaupane01@gmail.com</p>
-                            </a>
-                        </h6>
-                    </div> <!-- end of footer-col -->
-                    <div class="footer-col second">
-                        <h4 class="text-secondary">
-                            Get In Touch</h6>
-                            <p><i class="bi bi-house-fill text-secondary fs-5 me-2"></i> Kathmandu-30 ,Ratopul</p>
-                            <p>
-                                <i class="bi bi-envelope-fill text-secondary fs-5 me-2"></i>
-                                neupaner590@gmail.com
-                            </p>
-                            <p>
-                                <i class="bi bi-telephone-fill text-secondary fs-5 me-2"></i>
-                                <a asp-action="">+ 977 - 9840953005</a>
-                            </p>
-                            <p>
-                                <i class="bi bi-telephone-fill text-secondary fs-5 me-2"></i>
-                                <a asp-action="">+ 977 - 9882051995</a>
-                            </p>
-                        </h4>
-                    </div> <!-- end of footer-col -->
-                    <div class="footer-col third spa">
-                        <h4 class="mb-3 text-start text-secondary ps-4">Social Links</h4>
-                        <span class="fa-stack mx-1">
-                            <a href="https://www.facebook.com/profile.php?id=100082724087904" target="_blank"
-                               style="color: #3b5998">
-                                <i class="bi bi-facebook fs-3"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack mx-1">
-                            <a href="https://www.linkedin.com/in/roshan-nyaupane/" target="_blank"
-                               style="color: #0077b5;">
-                                <i class="bi bi-linkedin fs-3"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack mx-1">
-                            <a href="https://twitter.com/Enapuayn" target="_blank" style="color: #00acee;">
-                                <i class="bi bi-twitter fs-3"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack mx-1">
-                            <a href="https://github.com/RNyaupane" target="_blank" style="color: #171515">
-                                <i class="bi bi-github fs-3"></i>
-                            </a>
-                        </span>
-                    </div>
+
+
+    @*Footer*@
+
+    <div class="footer">
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-white mt-2"
+                style="background-color: #1c2331">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-between pt-4 px-1">
+                <!-- Left -->
+
+                <div class="me-0">
+                    <a class="navbar-brand logo-image px-2 m-0" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img id="logoImage" src="~/images/logo-roshan-white.png" style="height: 70px; width: 100px;" alt="alternative">
+                    </a>
+                    <span class="fs-5"></span>
                 </div>
-            </div>
-        </div>
+                <!-- Left -->
+                <!-- Right -->
+                <div id="social-link-footer">
+                    <a href="https://www.facebook.com/profile.php?id=100082724087904" target="_blank" class="text-white me-4 fs-5">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/Enapuayn" target="_blank" class="text-white me-4 fs-5">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/nyaupane_roshan/" target="_blank" class="text-white me-4 fs-5">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/roshan-nyaupane/" target="_blank" class="text-white me-4 fs-5">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/RNyaupane" target="_blank" class="text-white me-4 fs-5">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold text-white">About Me</h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <p>
+                                This website serves as a showcase of my work, skills, and experiences.
+                                It is designed to provide an overview of my professional journey and highlight the projects
+                                and achievements that define my career.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold text-white">Services</h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <p>
+                                <a href="#!" class="">Web Developer</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="">Responsive Design</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="">Color Choosing</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="">Help and Support</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold text-white"> Links</h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <p>
+                                <a href="#!" class="">About us</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="">Be a member</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="">Daily Blogs</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="">My Gallery</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold text-white">Contact</h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <p><i class="fas fa-home mr-3"></i> Kathmandu-30 ,Ratopul</p>
+                            <p><i class="fas fa-envelope mr-3"></i> <a href="mailto:contact@site.com">roshannyaupane01@gmail.com</a></p>
+                            <p><i class="fas fa-phone mr-3"></i> +977-9840953995</p>
+                            <p><i class="fas fa-print mr-3"></i> +977-9882051995</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+        </footer>
+        <!-- Footer -->
+
     </div>
+    <!-- End of .container -->
     <!-- end of footer -->
     <!-- Copyright -->
-    <div class="copyright bg-dark">
+    <div class="copyright" id="copyright" style="background:#080c2b;    ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small pt-3 text-light">
-                        Copyright © <a asp-action="" class="text-light">roshan-nyaupane</a>
-                    </p>
+                    <h6 class="p-small pt-3" id="copyrightText">
+                        Copyright © <a asp-action="" id="copyrightText1">roshan-nyaupane</a>
+                    </h6>
                 </div>
             </div>
         </div>
@@ -272,6 +341,30 @@
     <!-- Scripts -->
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/scripts.js"></script>
+    <script>
+        var icon = document.getElementById("ChangeTheme");
+        var logo = document.getElementById("logoImage");
+
+        // Check if the user has a theme preference stored in localStorage
+        var themePreference = localStorage.getItem("theme");
+        if (themePreference) {
+            document.body.classList.add(themePreference);
+            if (themePreference === "dark-theme") {
+                logo.src = "/images/logo-roshan-white.png";
+            }
+        }
+
+        icon.onclick = function () {
+            document.body.classList.toggle("dark-theme");
+            if (document.body.classList.contains("dark-theme")) {
+                logo.src = "/images/logo-roshan-white.png";
+                localStorage.setItem("theme", "dark-theme"); // Store the theme preference in localStorage
+            } else {
+                logo.src = "/images/logo-roshan.png";
+                localStorage.setItem("theme", "light-theme"); // Store the theme preference in localStorage
+            }
+        };
+    </script>*
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -2,13 +2,13 @@
 
 
 
-.dark {
+/*.dark {
   background: #110f16;
 }
 
 .light {
   background: #f3f5f7;
-}
+}*/
 
 a,
 a:hover {
@@ -32,7 +32,6 @@ a:hover {
   margin: 0 0 2rem 0;
   overflow: hidden;
   position: relative;
-  color: #191e47;
 }
 .postcard.dark {
   background-color: #18151f;
@@ -72,7 +71,6 @@ a:hover {
   height: 10px;
   margin: 10px 0;
   border-radius: 5px;
-  background-color: #424242;
   transition: width 0.2s ease;
 }
 .postcard .postcard__text {
@@ -97,7 +95,6 @@ a:hover {
 }
 .postcard .postcard__tagbox .tag__item {
   display: inline-block;
-  border:1px solid #000000;
   border-radius: 20px;
   padding: 2.5px 10px;
   margin: 0 5px 5px 0;
@@ -107,8 +104,7 @@ a:hover {
 }
 .postcard .postcard__tagbox .tag__item1 {
     display: inline-block;
-    background: #4555d2;
-    color: white;
+    /*background: #4555d2;*/
     border-radius: 20px;
     padding: 2.5px 10px;
     margin: 0 5px 5px 0;

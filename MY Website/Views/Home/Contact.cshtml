@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="contact" class="form-1 bg-light">
+<div id="contact" class="form-1 bg-gray">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -21,15 +21,15 @@
                     }
                     <form method="post" asp-action="Contact">
                         <div class="form-group">
-                            <input type="text" asp-for="Name" class="form-control-input mt-3" placeholder="Name" >
+                            <input type="text" asp-for="Name" class="form-control-input bg-gray mt-3" placeholder="Name" >
                             <span asp-validation-for="Name" class="text-danger ms-2"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" asp-for="Email" class="form-control-input" placeholder="Email" >
+                            <input type="email" asp-for="Email" class="form-control-input bg-gray" placeholder="Email">
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <textarea asp-for="Message" class="form-control-textarea" placeholder="Message" ></textarea>
+                            <textarea asp-for="Message" class="form-control-textarea bg-gray" placeholder="Message"></textarea>
                             <span asp-validation-for="Message" class="text-danger"></span>
                         </div>
                         <div class="form-group">
