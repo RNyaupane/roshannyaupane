@@ -25,7 +25,6 @@ namespace MY_Website.Controllers
         {
             return View();
         }
-        [Authorize]
         public IActionResult Project()
         {
             return View();
@@ -60,7 +59,6 @@ namespace MY_Website.Controllers
             }
         }
 
-        [Authorize]
         public IActionResult Blog()
         {
             return View();

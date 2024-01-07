@@ -39,9 +39,25 @@ p {
 	color: var(--secondary_text);
 	font: 400 1rem/1.625rem "Open Sans", sans-serif;
 }
-body{
-	background-color:var(--white);
+body {
+	background-color: var(--white);
 }
+body {
+	scrollbar-width: thin;
+	scrollbar-color: #4d7fff #ddd;
+}
+
+	body::-webkit-scrollbar {
+		width: 0px;
+		position:relative;
+	}
+
+	body::-webkit-scrollbar-thumb {
+		background: linear-gradient(to bottom right, #4555d2, #2E3192);
+		border-radius: 25px;
+	}
+
+
 h1 {
 	color: var(--primary_text);
 	font-weight: 700;
